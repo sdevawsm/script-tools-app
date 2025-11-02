@@ -20,13 +20,13 @@ Escolha a versão adequada para o seu sistema operacional:
 ## 🖼️ Interface do Aplicativo
 
 ### Tela Inicial  
-![Tela Inicial](./imagens/img1.png)
-![Tela Inicial](./imagens/img2.png)
+![Tela Inicial](./images/img1.png)
+![Tela Inicial](./images/img2.png)
 
 ### Editor de Scripts  
-![Editor de Scripts](./imagens/img3.png)
-![Editor de Scripts](./imagens/img4.png)
-![Editor de Scripts](./imagens/img5.png)
+![Editor de Scripts](./images/img3.png)
+![Editor de Scripts](./images/img4.png)
+![Editor de Scripts](./images/img5.png)
 
 
 ---
