@@ -10,23 +10,24 @@ Escolha a versão adequada para o seu sistema operacional:
 
 | Sistema Operacional | Tipo de Arquivo | Link de Download |
 |---------------------|-----------------|------------------|
-| 🪟 Windows | Instalador (.exe) / Portable (.zip) | [Baixar Windows](https://exemplo.com/windows) |
-| 🪟 Windows | Instalador (.exe) / Installer (.zip) | [Baixar Windows](https://exemplo.com/windows) |
-| 🐧 Linux | AppImage (.AppImage) | [Baixar Linux](https://exemplo.com/linux) |
-| 🍎 macOS | Aplicativo (.dmg) | [Baixar macOS](https://exemplo.com/macos) |
+| 🪟 Windows | Instalador (.exe) / Portable (.zip) | [Baixar Windows](https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.1.0.0.exe) |
+| 🪟 Windows | Instalador (.exe) / Installer (.zip) | [Baixar Windows](https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.Setup.1.0.0.exe) |
+| 🐧 Linux | AppImage (.AppImage) | [Baixar Linux](https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.AppImage) |
+| 🍎 macOS | Aplicativo (.dmg) | [Baixar macOS](https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.dmg) |
 
 ---
 
 ## 🖼️ Interface do Aplicativo
 
 ### Tela Inicial  
-![Tela Inicial](./imagens/tela-inicial.png)
+![Tela Inicial](./imagens/img1.png)
+![Tela Inicial](./imagens/img2.png)
 
 ### Editor de Scripts  
-![Editor de Scripts](./imagens/editor-scripts.png)
+![Editor de Scripts](./imagens/img3.png)
+![Editor de Scripts](./imagens/img4.png)
+![Editor de Scripts](./imagens/img5.png)
 
-### Configurações  
-![Configurações](./imagens/configuracoes.png)
 
 ---
 

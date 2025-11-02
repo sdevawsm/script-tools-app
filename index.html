@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Script Tools — Download</title>
+  <meta name="description" content="Baixe Script Tools para Windows, Linux (AppImage) ou macOS. O site detecta seu sistema e destaca o botão de download principal."/>
+  <style>
+    :root{
+      --bg:#0b1220; --card:#0f1724; --muted:#96a7bf; --text:#E7F2FF;
+      --accent:#2dd4bf; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.03);
+      --success:#10b981;
+      --radius:12px;
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      background:linear-gradient(180deg,#061025 0%, #071227 60%); color:var(--text);
+      display:flex;align-items:center;justify-content:center;padding:28px;
+    }
+    .wrap{width:100%;max-width:1100px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+           border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);}
+    .hero{display:flex;gap:24px;align-items:center}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 18px rgba(96,165,250,0.08);
+    }
+    h1{margin:0;font-size:22px}
+    .desc{color:var(--muted);margin-top:6px}
+    .right{margin-left:auto;text-align:right}
+    .version{background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+    .download-area{display:flex;gap:18px;margin-top:18px;align-items:center;flex-wrap:wrap}
+    .primary-cta{
+      display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#042027;border:none;padding:14px 18px;border-radius:12px;font-weight:700;cursor:pointer;
+      box-shadow:0 10px 30px rgba(47,201,182,0.15);text-decoration:none;
+    }
+    .primary-cta:focus{outline:3px solid rgba(96,165,250,0.18); outline-offset:2px}
+    .secondary{display:flex;gap:10px}
+    .chip{background:var(--glass);border-radius:10px;padding:8px 10px;color:var(--muted);font-size:13px}
+    .os-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .card{background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);display:flex;gap:12px;align-items:center}
+    .card .ico{width:44px;height:44;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);font-size:20px}
+    .card .meta{flex:1}
+    .card .name{font-weight:700}
+    .card .note{color:var(--muted);font-size:13px;margin-top:6px}
+    .card a{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none}
+    .card.primary{box-shadow:0 10px 30px rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.14);background:linear-gradient(180deg, rgba(96,165,250,0.03), rgba(255,255,255,0.01))}
+    .focus-ring:focus{outline:3px solid rgba(96,165,250,0.18); outline-offset:2px}
+    .footer{margin-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+    .links a{color:var(--accent-2);text-decoration:none;margin-left:10px}
+    @media(max-width:880px){ .os-cards{grid-template-columns:repeat(2,1fr)} .hero{flex-direction:column;align-items:flex-start} .right{text-align:left;margin-left:0}}
+    @media(max-width:520px){ .os-cards{grid-template-columns:1fr} .download-area{flex-direction:column;align-items:stretch} .primary-cta{width:100%} .secondary{width:100%;justify-content:space-between} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel" role="main" aria-labelledby="page-title">
+      <div class="hero">
+        <div class="brand">
+          <div class="logo" aria-hidden>ST</div>
+          <div>
+            <h1 id="page-title">Script Tools</h1>
+            <div class="desc">Seu assistente multiplataforma para produtividade e geração de textos personalizados.</div>
+          </div>
+        </div>
+
+        <div class="right" aria-hidden>
+          <div class="version" id="release">Versão 1.0.0</div>
+          <div class="desc" style="margin-top:8px">Compatível com Windows · Linux · macOS</div>
+        </div>
+      </div>
+
+      <div class="download-area" aria-label="Área de download">
+        <a id="primaryDownload" class="primary-cta focus-ring" href="#" role="button" aria-label="Baixar para seu sistema detectado">
+          <span id="primaryIcon" style="font-size:20px">⬇️</span>
+          <span id="primaryText">Baixar</span>
+          <span id="primaryMeta" style="opacity:0.9;font-weight:600;background:rgba(0,0,0,0.06);padding:6px 8px;border-radius:8px;font-size:13px;">Instalador</span>
+        </a>
+
+        <div class="secondary" role="group" aria-label="Outros downloads">
+          <div class="chip" id="detected">Detecção: —</div>
+          <div class="chip">Atualizações automáticas</div>
+        </div>
+      </div>
+
+      <div class="os-cards" id="osCards" aria-hidden="false">
+        <div class="card" id="card-windows" role="article" tabindex="0">
+          <div class="ico">🪟</div>
+          <div class="meta">
+            <div class="name">Windows</div>
+            <div class="note">Instalador (.exe) • Portable (.zip)</div>
+          </div>
+          <a id="link-windows" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.1.0.0.exe" class="focus-ring">Baixar</a>
+        </div>
+
+        <div class="card" id="card-linux" role="article" tabindex="0">
+          <div class="ico">🐧</div>
+          <div class="meta">
+            <div class="name">Linux (AppImage)</div>
+            <div class="note">AppImage • Torne executável: chmod +x nome-do-app.AppImage</div>
+          </div>
+          <a id="link-linux" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.AppImage" class="focus-ring">Baixar</a>
+        </div>
+
+        <div class="card" id="card-macos" role="article" tabindex="0">
+          <div class="ico">🍎</div>
+          <div class="meta">
+            <div class="name">macOS</div>
+            <div class="note">Arquivo .dmg — arraste para Aplicativos</div>
+          </div>
+          <a id="link-macos" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.dmg" class="focus-ring">Baixar</a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="meta desc">Se o botão não corresponder ao seu sistema, escolha manualmente.</div>
+        <div class="links">
+          <a href="https://github.com/sdevawsm/script-tools-app/releases">Notas de versão</a>
+          <a href="https://github.com/sdevawsm/script-tools-app">Repositório</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const primary = document.getElementById('primaryDownload');
+      const primaryText = document.getElementById('primaryText');
+      const primaryIcon = document.getElementById('primaryIcon');
+      const primaryMeta = document.getElementById('primaryMeta');
+      const detectedChip = document.getElementById('detected');
+
+      const links = {
+        windows: {
+          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.1.0.0.exe',
+          label: 'Windows — Instalador (.exe)',
+          icon: '🪟',
+          meta: 'Instalador'
+        },
+        linux: {
+          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.AppImage',
+          label: 'Linux — AppImage',
+          icon: '🐧',
+          meta: 'AppImage'
+        },
+        mac: {
+          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.dmg',
+          label: 'macOS — .dmg',
+          icon: '🍎',
+          meta: '.dmg'
+        }
+      };
+
+      // Accessibility helper: set aria-pressed on chosen card links
+      function setPrimary(platformKey){
+        const info = links[platformKey];
+        if(!info) {
+          primary.setAttribute('href','#');
+          primaryText.textContent = 'Escolher versão';
+          primaryIcon.textContent = '⬇️';
+          primaryMeta.textContent = '';
+          detectedChip.textContent = 'Detecção: não identificada';
+          return;
+        }
+        primary.setAttribute('href', info.url);
+        primaryText.textContent = 'Baixar para ' + info.label.split(' — ')[0];
+        primaryIcon.textContent = info.icon;
+        primaryMeta.textContent = info.meta;
+        detectedChip.textContent = 'Detecção: ' + info.label.split(' — ')[0];
+        // highlight corresponding card visually
+        document.querySelectorAll('.card').forEach(c=>c.classList.remove('primary'));
+        const card = document.getElementById('card-' + (platformKey==='mac'?'macos':platformKey));
+        if(card) card.classList.add('primary');
+      }
+
+      // detection heuristics (userAgentData preferred)
+      const ua = navigator.userAgent || '';
+      const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+      let detected = null;
+
+      if(navigator.userAgentData && navigator.userAgentData.platform){
+        const p = (navigator.userAgentData.platform || '').toLowerCase();
+        if(p.includes('win')) detected = 'windows';
+        else if(p.includes('linux')) detected = 'linux';
+        else if(p.includes('mac')) detected = 'mac';
+      }
+
+      if(!detected){
+        if(/windows/i.test(ua) || /win/i.test(platform)) detected = 'windows';
+        else if(/linux/i.test(ua) || /linux/i.test(platform) || /\bX11\b/.test(ua)) detected = 'linux';
+        else if(/mac os|macintosh|mac os x|iphone|ipad/i.test(ua) || /mac/i.test(platform)) detected = 'mac';
+      }
+
+      // final fallback
+      setPrimary(detected);
+
+      // make card links update the primary CTA when clicked/focused (better UX)
+      document.getElementById('link-windows').addEventListener('click', ()=>setPrimary('windows'));
+      document.getElementById('link-linux').addEventListener('click', ()=>setPrimary('linux'));
+      document.getElementById('link-macos').addEventListener('click', ()=>setPrimary('mac'));
+
+      // keyboard support: Enter on card toggles primary selection
+      Array.from(document.querySelectorAll('.card')).forEach(card=>{
+        card.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            const id = card.id;
+            if(id === 'card-windows') setPrimary('windows');
+            if(id === 'card-linux') setPrimary('linux');
+            if(id === 'card-macos') setPrimary('mac');
+            e.preventDefault();
+          }
+        });
+      });
+
+      // Minor UX: prevent running primary CTA if href is '#'
+      primary.addEventListener('click', (e)=>{
+        if(primary.getAttribute('href') === '#'){ e.preventDefault(); primary.focus(); }
+      });
+
+      // progressive enhancement: add aria labels to card buttons
+      document.getElementById('link-windows').setAttribute('aria-label','Baixar para Windows');
+      document.getElementById('link-linux').setAttribute('aria-label','Baixar para Linux');
+      document.getElementById('link-macos').setAttribute('aria-label','Baixar para macOS');
+
+      // show release field from a known constant, kept for clarity
+      document.getElementById('release').textContent = 'Versão 1.0.0';
+    })();
+  </script>
+</body>
+</html>
