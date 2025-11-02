@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Script Tools — Download</title>
   <meta name="description" content="Baixe Script Tools para Windows, Linux (AppImage) ou macOS. O site detecta seu sistema e destaca o botão de download principal."/>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <style>
     :root{
       /* esquema mais claro */
@@ -42,6 +44,7 @@
       box-shadow:0 6px 18px rgba(59,130,246,0.08);
       font-weight:700;
     }
+    .logo .bi{font-size:26px}
     h1{margin:0;font-size:22px;color:var(--text)}
     .desc{color:var(--muted);margin-top:6px}
     .right{margin-left:auto;text-align:right}
@@ -53,6 +56,7 @@
       color:white;border:none;padding:14px 18px;border-radius:12px;font-weight:700;cursor:pointer;
       box-shadow:var(--primary-cta-shadow);text-decoration:none;
     }
+    .primary-cta i{font-size:18px}
     .primary-cta small{opacity:0.95;font-weight:600;background:rgba(255,255,255,0.08);padding:6px 8px;border-radius:8px;font-size:13px}
     .primary-cta:focus{outline:3px solid rgba(59,130,246,0.14); outline-offset:2px}
     .secondary{display:flex;gap:10px}
@@ -65,6 +69,7 @@
     }
     .card:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(16,24,40,0.06)}
     .card .ico{width:44px;height:44;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;font-size:20px;color:var(--muted)}
+    .card .ico .bi{font-size:20px;color:var(--muted)}
     .card .meta{flex:1}
     .card .name{font-weight:700;color:var(--text)}
     .card .note{color:var(--muted);font-size:13px;margin-top:6px}
@@ -86,7 +91,7 @@
     <div class="panel" role="main" aria-labelledby="page-title">
       <div class="hero">
         <div class="brand">
-          <div class="logo" aria-hidden>ST</div>
+          <div class="logo" aria-hidden><i class="bi bi-tools"></i></div>
           <div>
             <h1 id="page-title">Script Tools</h1>
             <div class="desc">Seu assistente multiplataforma para produtividade e geração de textos personalizados.</div>
@@ -101,7 +106,7 @@
 
       <div class="download-area" aria-label="Área de download">
         <a id="primaryDownload" class="primary-cta focus-ring" href="#" role="button" aria-label="Baixar para seu sistema detectado">
-          <span id="primaryIcon" style="font-size:20px">⬇️</span>
+          <i id="primaryIcon" class="bi bi-download" aria-hidden></i>
           <span id="primaryText">Baixar</span>
           <small id="primaryMeta">Instalador</small>
         </a>
@@ -114,30 +119,30 @@
 
       <div class="os-cards" id="osCards" aria-hidden="false">
         <div class="card" id="card-windows" role="article" tabindex="0">
-          <div class="ico">🪟</div>
+          <div class="ico" aria-hidden><i class="bi bi-windows"></i></div>
           <div class="meta">
             <div class="name">Windows</div>
             <div class="note">Instalador (.exe) • Portable (.zip)</div>
           </div>
-          <a id="link-windows" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.1.0.0.exe" class="focus-ring">Baixar</a>
+          <a id="link-windows" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.1.0.0.exe" class="focus-ring" aria-label="Baixar para Windows">Baixar</a>
         </div>
 
         <div class="card" id="card-linux" role="article" tabindex="0">
-          <div class="ico">🐧</div>
+          <div class="ico" aria-hidden><i class="bi bi-terminal"></i></div>
           <div class="meta">
             <div class="name">Linux (AppImage)</div>
             <div class="note">AppImage • Torne executável: chmod +x nome-do-app.AppImage</div>
           </div>
-          <a id="link-linux" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0-0.AppImage" class="focus-ring">Baixar</a>
+          <a id="link-linux" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0-0.AppImage" class="focus-ring" aria-label="Baixar para Linux">Baixar</a>
         </div>
 
         <div class="card" id="card-macos" role="article" tabindex="0">
-          <div class="ico">🍎</div>
+          <div class="ico" aria-hidden><i class="bi bi-apple"></i></div>
           <div class="meta">
             <div class="name">macOS</div>
             <div class="note">Arquivo .dmg — arraste para Aplicativos</div>
           </div>
-          <a id="link-macos" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.dmg" class="focus-ring">Baixar</a>
+          <a id="link-macos" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0-0.dmg" class="focus-ring" aria-label="Baixar para macOS">Baixar</a>
         </div>
       </div>
 
@@ -163,19 +168,19 @@
         windows: {
           url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App.1.0.0.exe',
           label: 'Windows — Instalador (.exe)',
-          icon: '🪟',
+          iconClass: 'bi-windows',
           meta: 'Instalador'
         },
         linux: {
-          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.AppImage',
+          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0-0.AppImage',
           label: 'Linux — AppImage',
-          icon: '🐧',
+          iconClass: 'bi-terminal',
           meta: 'AppImage'
         },
         mac: {
-          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.dmg',
+          url: 'https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0-0.dmg',
           label: 'macOS — .dmg',
-          icon: '🍎',
+          iconClass: 'bi-apple',
           meta: '.dmg'
         }
       };
@@ -185,7 +190,7 @@
         if(!info) {
           primary.setAttribute('href','#');
           primaryText.textContent = 'Escolher versão';
-          primaryIcon.textContent = '⬇️';
+          primaryIcon.className = 'bi bi-download';
           primaryMeta.textContent = '';
           detectedChip.textContent = 'Detecção: não identificada';
           document.querySelectorAll('.card').forEach(c=>c.classList.remove('primary'));
@@ -193,7 +198,7 @@
         }
         primary.setAttribute('href', info.url);
         primaryText.textContent = 'Baixar para ' + info.label.split(' — ')[0];
-        primaryIcon.textContent = info.icon;
+        primaryIcon.className = 'bi ' + info.iconClass;
         primaryMeta.textContent = info.meta;
         detectedChip.textContent = 'Detecção: ' + info.label.split(' — ')[0];
         document.querySelectorAll('.card').forEach(c=>c.classList.remove('primary'));
@@ -239,10 +244,6 @@
       primary.addEventListener('click', (e)=>{
         if(primary.getAttribute('href') === '#'){ e.preventDefault(); primary.focus(); }
       });
-
-      document.getElementById('link-windows').setAttribute('aria-label','Baixar para Windows');
-      document.getElementById('link-linux').setAttribute('aria-label','Baixar para Linux');
-      document.getElementById('link-macos').setAttribute('aria-label','Baixar para macOS');
 
       document.getElementById('release').textContent = 'Versão 1.0.0';
     })();
