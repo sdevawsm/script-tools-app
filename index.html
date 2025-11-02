@@ -7,52 +7,76 @@
   <meta name="description" content="Baixe Script Tools para Windows, Linux (AppImage) ou macOS. O site detecta seu sistema e destaca o botão de download principal."/>
   <style>
     :root{
-      --bg:#0b1220; --card:#0f1724; --muted:#96a7bf; --text:#E7F2FF;
-      --accent:#2dd4bf; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.03);
-      --success:#10b981;
+      /* esquema mais claro */
+      --bg: #f6f9fc;
+      --panel: #ffffff;
+      --text: #0f1724;
+      --muted: #6b7280;
+      --accent: #06b6d4;    /* teal-cyan */
+      --accent-2: #3b82f6;  /* blue */
+      --glass: rgba(15,23,36,0.04);
       --radius:12px;
-      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --shadow: 0 8px 20px rgba(16,24,40,0.06);
+      --card-border: rgba(16,24,40,0.06);
+      --primary-cta-shadow: 0 8px 24px rgba(59,130,246,0.12);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-      background:linear-gradient(180deg,#061025 0%, #071227 60%); color:var(--text);
+      background:linear-gradient(180deg,var(--bg) 0%, #ffffff 60%); color:var(--text);
       display:flex;align-items:center;justify-content:center;padding:28px;
     }
     .wrap{width:100%;max-width:1100px}
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-           border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);}
+    .panel{
+      background:var(--panel);
+      border-radius:var(--radius); padding:28px;
+      box-shadow:var(--shadow); border:1px solid var(--card-border);
+    }
     .hero{display:flex;gap:24px;align-items:center}
     .brand{display:flex;align-items:center;gap:14px}
     .logo{
-      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 18px rgba(96,165,250,0.08);
+      width:64px;height:64px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-size:26px;color:white;
+      box-shadow:0 6px 18px rgba(59,130,246,0.08);
+      font-weight:700;
     }
-    h1{margin:0;font-size:22px}
+    h1{margin:0;font-size:22px;color:var(--text)}
     .desc{color:var(--muted);margin-top:6px}
     .right{margin-left:auto;text-align:right}
     .version{background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
     .download-area{display:flex;gap:18px;margin-top:18px;align-items:center;flex-wrap:wrap}
     .primary-cta{
-      display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#042027;border:none;padding:14px 18px;border-radius:12px;font-weight:700;cursor:pointer;
-      box-shadow:0 10px 30px rgba(47,201,182,0.15);text-decoration:none;
+      display:inline-flex;align-items:center;gap:12px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;border:none;padding:14px 18px;border-radius:12px;font-weight:700;cursor:pointer;
+      box-shadow:var(--primary-cta-shadow);text-decoration:none;
     }
-    .primary-cta:focus{outline:3px solid rgba(96,165,250,0.18); outline-offset:2px}
+    .primary-cta small{opacity:0.95;font-weight:600;background:rgba(255,255,255,0.08);padding:6px 8px;border-radius:8px;font-size:13px}
+    .primary-cta:focus{outline:3px solid rgba(59,130,246,0.14); outline-offset:2px}
     .secondary{display:flex;gap:10px}
     .chip{background:var(--glass);border-radius:10px;padding:8px 10px;color:var(--muted);font-size:13px}
     .os-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-    .card{background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);display:flex;gap:12px;align-items:center}
-    .card .ico{width:44px;height:44;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);font-size:20px}
+    .card{
+      background:linear-gradient(180deg, #ffffff, #fbfdff);padding:14px;border-radius:10px;
+      border:1px solid var(--card-border);display:flex;gap:12px;align-items:center;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(16,24,40,0.06)}
+    .card .ico{width:44px;height:44;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;font-size:20px;color:var(--muted)}
     .card .meta{flex:1}
-    .card .name{font-weight:700}
+    .card .name{font-weight:700;color:var(--text)}
     .card .note{color:var(--muted);font-size:13px;margin-top:6px}
-    .card a{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none}
-    .card.primary{box-shadow:0 10px 30px rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.14);background:linear-gradient(180deg, rgba(96,165,250,0.03), rgba(255,255,255,0.01))}
-    .focus-ring:focus{outline:3px solid rgba(96,165,250,0.18); outline-offset:2px}
+    .card a{background:transparent;border:1px solid rgba(16,24,40,0.06);padding:8px 10px;border-radius:8px;color:var(--accent-2);text-decoration:none;font-weight:600}
+    .card.primary{
+      border:1px solid rgba(59,130,246,0.22);
+      box-shadow:0 12px 30px rgba(59,130,246,0.08);
+      background:linear-gradient(180deg, rgba(59,130,246,0.03), #ffffff);
+    }
+    .focus-ring:focus{outline:3px solid rgba(59,130,246,0.12); outline-offset:2px}
     .footer{margin-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
-    .links a{color:var(--accent-2);text-decoration:none;margin-left:10px}
+    .links a{color:var(--accent-2);text-decoration:none;margin-left:10px;font-weight:600}
     @media(max-width:880px){ .os-cards{grid-template-columns:repeat(2,1fr)} .hero{flex-direction:column;align-items:flex-start} .right{text-align:left;margin-left:0}}
     @media(max-width:520px){ .os-cards{grid-template-columns:1fr} .download-area{flex-direction:column;align-items:stretch} .primary-cta{width:100%} .secondary{width:100%;justify-content:space-between} }
   </style>
@@ -79,7 +103,7 @@
         <a id="primaryDownload" class="primary-cta focus-ring" href="#" role="button" aria-label="Baixar para seu sistema detectado">
           <span id="primaryIcon" style="font-size:20px">⬇️</span>
           <span id="primaryText">Baixar</span>
-          <span id="primaryMeta" style="opacity:0.9;font-weight:600;background:rgba(0,0,0,0.06);padding:6px 8px;border-radius:8px;font-size:13px;">Instalador</span>
+          <small id="primaryMeta">Instalador</small>
         </a>
 
         <div class="secondary" role="group" aria-label="Outros downloads">
@@ -104,7 +128,7 @@
             <div class="name">Linux (AppImage)</div>
             <div class="note">AppImage • Torne executável: chmod +x nome-do-app.AppImage</div>
           </div>
-          <a id="link-linux" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0.0.AppImage" class="focus-ring">Baixar</a>
+          <a id="link-linux" href="https://github.com/sdevawsm/script-tools-app/releases/download/1.0.0/ScriptTools.App-1.0-0.AppImage" class="focus-ring">Baixar</a>
         </div>
 
         <div class="card" id="card-macos" role="article" tabindex="0">
@@ -156,7 +180,6 @@
         }
       };
 
-      // Accessibility helper: set aria-pressed on chosen card links
       function setPrimary(platformKey){
         const info = links[platformKey];
         if(!info) {
@@ -165,6 +188,7 @@
           primaryIcon.textContent = '⬇️';
           primaryMeta.textContent = '';
           detectedChip.textContent = 'Detecção: não identificada';
+          document.querySelectorAll('.card').forEach(c=>c.classList.remove('primary'));
           return;
         }
         primary.setAttribute('href', info.url);
@@ -172,13 +196,11 @@
         primaryIcon.textContent = info.icon;
         primaryMeta.textContent = info.meta;
         detectedChip.textContent = 'Detecção: ' + info.label.split(' — ')[0];
-        // highlight corresponding card visually
         document.querySelectorAll('.card').forEach(c=>c.classList.remove('primary'));
         const card = document.getElementById('card-' + (platformKey==='mac'?'macos':platformKey));
         if(card) card.classList.add('primary');
       }
 
-      // detection heuristics (userAgentData preferred)
       const ua = navigator.userAgent || '';
       const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
       let detected = null;
@@ -196,15 +218,12 @@
         else if(/mac os|macintosh|mac os x|iphone|ipad/i.test(ua) || /mac/i.test(platform)) detected = 'mac';
       }
 
-      // final fallback
       setPrimary(detected);
 
-      // make card links update the primary CTA when clicked/focused (better UX)
       document.getElementById('link-windows').addEventListener('click', ()=>setPrimary('windows'));
       document.getElementById('link-linux').addEventListener('click', ()=>setPrimary('linux'));
       document.getElementById('link-macos').addEventListener('click', ()=>setPrimary('mac'));
 
-      // keyboard support: Enter on card toggles primary selection
       Array.from(document.querySelectorAll('.card')).forEach(card=>{
         card.addEventListener('keydown', (e)=>{
           if(e.key === 'Enter' || e.key === ' '){
@@ -217,17 +236,14 @@
         });
       });
 
-      // Minor UX: prevent running primary CTA if href is '#'
       primary.addEventListener('click', (e)=>{
         if(primary.getAttribute('href') === '#'){ e.preventDefault(); primary.focus(); }
       });
 
-      // progressive enhancement: add aria labels to card buttons
       document.getElementById('link-windows').setAttribute('aria-label','Baixar para Windows');
       document.getElementById('link-linux').setAttribute('aria-label','Baixar para Linux');
       document.getElementById('link-macos').setAttribute('aria-label','Baixar para macOS');
 
-      // show release field from a known constant, kept for clarity
       document.getElementById('release').textContent = 'Versão 1.0.0';
     })();
   </script>
